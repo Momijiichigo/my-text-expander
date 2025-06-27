@@ -11,7 +11,7 @@ Just putting it here on GitHub so anyone, who would do the same, can save time.
 
 https://github.com/user-attachments/assets/108397de-3cce-41dd-a84c-7cce132a5fed
 
-## What I tested
+## Features I tested
 
 - Snippet creation/modification/deletion works
 - Simple text expansion works
@@ -19,15 +19,19 @@ https://github.com/user-attachments/assets/108397de-3cce-41dd-a84c-7cce132a5fed
 - Clipboard insertion `{clipboard}` works
 - inserting current time with custom format e.g. `{time: MMMM DD, YYYY}` works
 
-# My Text Expander - Text Expansion Chrome Extension
-
-A Chrome extension for text expansion inspired by Text Blaze.
-
-Dev Stack:
+## Dev Stack
 - SolidJS
 - TailwindCSS
 - Bun.js
 - Vite.js
+
+The following is the README written by the LLM. Here you go 👇️
+
+----
+
+# My Text Expander - Text Expansion Chrome Extension
+
+A Chrome extension for text expansion inspired by Text Blaze.
 
 
 ## Features
@@ -53,33 +57,19 @@ Dev Stack:
    ```bash
    bun run build
    ```
-4. Create extension icons:
-   - Open `assets/create-icons.html` in your browser
-   - Click on each canvas to download the PNG icons
-   - Save them as `icon16.png`, `icon32.png`, `icon48.png`, and `icon128.png` in the `public/assets/icons/` folder
 5. Open Chrome and navigate to `chrome://extensions/`
 6. Enable "Developer mode" in the top right
 7. Click "Load unpacked" and select the `dist` folder
 8. The extension will appear in your extensions list
 
-### Development Mode
-
-For development with automatic rebuilding:
-```bash
-bun run dev
-```
-
-This will watch for changes and rebuild automatically. You'll need to reload the extension in Chrome after changes.
 
 ### Converting Icons
 
-If you need to create proper PNG icons:
-
-1. Open `assets/create-icons.html` in a web browser
-2. Click on each canvas to download the PNG files
-3. Save them in the `assets/icons/` folder with the correct names
-
-Alternatively, you can use any image editor to convert the `assets/icons/icon.svg` file to PNG format at the required sizes (16x16, 32x32, 48x48, 128x128).
+If you modified the svg icons (`public/assets/icons/`), you can run:
+```bash
+bun run generate-icons
+```
+To regenerate the PNG icons from the SVG files, then rebuild `bun run build`.
 
 ## Usage
 
@@ -93,7 +83,7 @@ Alternatively, you can use any image editor to convert the `assets/icons/icon.sv
 ### Text Expansion
 
 1. Type your shortcut anywhere on a webpage
-2. Press Tab, Space, or Enter to trigger expansion
+2. Press Space to trigger expansion
 3. Fill out any form fields that appear
 4. The text will be automatically inserted
 
