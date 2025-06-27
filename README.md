@@ -1,8 +1,8 @@
 # ⚠️Meh, this is not my work
 
 - I just needed a text expander without the word count limit
-- so I quickly used GitHub Copilot (Claude Sonnet 4) to make this.
-- Just putting it on GitHub so someone else ― who'd do the same thing ― don't need to ceate it from scratch.
+- so I quickly made this using GitHub Copilot (Claude Sonnet 4).
+- Just putting it here on GitHub so anyone with same need can save time.
 
 # My Text Expander - Text Expansion Chrome Extension
 
