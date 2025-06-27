@@ -183,7 +183,13 @@ class BackgroundService {
         content: '{time: MMMM DD, YYYY}',
         folder: 'Utilities',
         description: 'Current date'
-      }
+      },
+      {
+        shortcut: '/pcode',
+        content: '```{cursor}\n{clipboard}\n```',
+        folder: 'Utilities',
+        description: 'Paste program code from clipboard'
+      },
     ];
 
     for (const snippet of defaultSnippets) {

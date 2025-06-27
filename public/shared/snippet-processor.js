@@ -153,13 +153,7 @@ class SnippetProcessor {
 
   // Clipboard command processor
   async processClipboardCommand(command, variables) {
-    try {
-      const text = await navigator.clipboard.readText();
-      return text;
-    } catch (error) {
-      console.warn('Could not access clipboard:', error);
-      return '[Clipboard content]';
-    }
+    return '{{CLIPBOARD_CONTENT}}';
   }
 
   // Cursor command processor

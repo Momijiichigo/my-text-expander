@@ -336,6 +336,15 @@ class TextExpansionEngine {
     
     // Remove the shortcut from the text
     let newText = currentText.replace(new RegExp(shortcut + '$'), content);
+
+    if (content.includes('{{CLIPBOARD_CONTENT}}')) {
+      try {
+        const clipboardText = await navigator.clipboard.readText();
+        newText = newText.replace('{{CLIPBOARD_CONTENT}}', clipboardText);
+      } catch (error) {
+        console.error('Failed to read clipboard content:', error);
+      }
+    }
     
     // Handle cursor positioning
     let cursorPosition = newText.length;
