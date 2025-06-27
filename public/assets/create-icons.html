@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Icon Generator</title>
+</head>
+<body>
+    <h2>My Text Expander Icon Generator</h2>
+    <p>Use this page to generate icons. Right-click and save each canvas as PNG.</p>
+    
+    <!-- 16x16 Icon -->
+    <div>
+        <h3>16x16 Icon</h3>
+        <canvas id="icon16" width="16" height="16" style="border: 1px solid #ccc; image-rendering: pixelated; width: 64px; height: 64px;"></canvas>
+    </div>
+    
+    <!-- 32x32 Icon -->
+    <div>
+        <h3>32x32 Icon</h3>
+        <canvas id="icon32" width="32" height="32" style="border: 1px solid #ccc; image-rendering: pixelated; width: 128px; height: 128px;"></canvas>
+    </div>
+    
+    <!-- 48x48 Icon -->
+    <div>
+        <h3>48x48 Icon</h3>
+        <canvas id="icon48" width="48" height="48" style="border: 1px solid #ccc; image-rendering: pixelated; width: 192px; height: 192px;"></canvas>
+    </div>
+    
+    <!-- 128x128 Icon -->
+    <div>
+        <h3>128x128 Icon</h3>
+        <canvas id="icon128" width="128" height="128" style="border: 1px solid #ccc; width: 256px; height: 256px;"></canvas>
+    </div>
+
+    <script>
+        function drawIcon(canvas, size) {
+            const ctx = canvas.getContext('2d');
+            
+            // Clear canvas
+            ctx.clearRect(0, 0, size, size);
+            
+            // Background gradient
+            const gradient = ctx.createLinearGradient(0, 0, size, size);
+            gradient.addColorStop(0, '#3B82F6');
+            gradient.addColorStop(1, '#1D4ED8');
+            
+            // Draw background circle
+            ctx.fillStyle = gradient;
+            ctx.beginPath();
+            ctx.arc(size/2, size/2, size/2 - 1, 0, 2 * Math.PI);
+            ctx.fill();
+            
+            // Draw text expansion symbol (arrow with text lines)
+            ctx.fillStyle = '#FFFFFF';
+            ctx.strokeStyle = '#FFFFFF';
+            ctx.lineWidth = Math.max(1, size / 32);
+            
+            const centerX = size / 2;
+            const centerY = size / 2;
+            const scale = size / 32;
+            
+            // Draw abbreviated text lines (left side)
+            for (let i = 0; i < 3; i++) {
+                const y = centerY - 6*scale + i * 4*scale;
+                const width = 4*scale + i*scale;
+                ctx.fillRect(centerX - 12*scale, y, width, scale);
+            }
+            
+            // Draw arrow
+            ctx.beginPath();
+            ctx.moveTo(centerX - 4*scale, centerY);
+            ctx.lineTo(centerX + 2*scale, centerY);
+            ctx.stroke();
+            
+            // Arrow head
+            ctx.beginPath();
+            ctx.moveTo(centerX + 2*scale, centerY);
+            ctx.lineTo(centerX - scale, centerY - 2*scale);
+            ctx.moveTo(centerX + 2*scale, centerY);
+            ctx.lineTo(centerX - scale, centerY + 2*scale);
+            ctx.stroke();
+            
+            // Draw expanded text lines (right side)
+            for (let i = 0; i < 4; i++) {
+                const y = centerY - 8*scale + i * 3*scale;
+                const width = 8*scale + Math.sin(i) * 2*scale;
+                ctx.fillRect(centerX + 6*scale, y, width, scale*0.8);
+            }
+        }
+        
+        // Generate all icon sizes
+        drawIcon(document.getElementById('icon16'), 16);
+        drawIcon(document.getElementById('icon32'), 32);
+        drawIcon(document.getElementById('icon48'), 48);
+        drawIcon(document.getElementById('icon128'), 128);
+        
+        // Add download functionality
+        document.querySelectorAll('canvas').forEach(canvas => {
+            canvas.addEventListener('click', function() {
+                const link = document.createElement('a');
+                link.download = this.id + '.png';
+                link.href = this.toDataURL();
+                link.click();
+            });
+        });
+        
+        console.log('Icons generated! Click on each canvas to download the PNG files.');
+    </script>
+</body>
+</html>

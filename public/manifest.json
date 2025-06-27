@@ -1,0 +1,49 @@
+{
+  "manifest_version": 3,
+  "name": "My Text Expander",
+  "version": "1.0.0",
+  "description": "Personal text expansion tool for productivity",
+  
+  "permissions": [
+    "storage",
+    "activeTab",
+    "scripting"
+  ],
+  
+  "background": {
+    "service_worker": "background.js"
+  },
+  
+  "content_scripts": [{
+    "matches": ["<all_urls>"],
+    "js": ["content/content.js"],
+    "css": ["content/content.css"],
+    "run_at": "document_end",
+    "all_frames": true
+  }],
+  
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "My Text Expander",
+    "default_icon": {
+      "16": "assets/icons/icon16.png",
+      "32": "assets/icons/icon32.png",
+      "48": "assets/icons/icon48.png",
+      "128": "assets/icons/icon128.png"
+    }
+  },
+  
+  "options_page": "options.html",
+  
+  "icons": {
+    "16": "assets/icons/icon16.png",
+    "32": "assets/icons/icon32.png",
+    "48": "assets/icons/icon48.png",
+    "128": "assets/icons/icon128.png"
+  },
+  
+  "web_accessible_resources": [{
+    "resources": ["content/*"],
+    "matches": ["<all_urls>"]
+  }]
+}
