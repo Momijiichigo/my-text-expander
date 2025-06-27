@@ -1,12 +1,12 @@
-# My Text Expander - Text Expansion Chrome Extension
-
-A Chrome extension for text expansion inspired by Text Blaze, built with SolidJS and TailwindCSS.
-
-⚠️**Meh, this is not my work**
+# ⚠️Meh, this is not my work
 
 - I just needed a text expander without the character number limit
 - so I quickly used GitHub Copilot (Claude Sonnet 4) to make this.
 - Just putting it on GitHub so someone else ― who'd make the same thing ― don't need to ceate it from scratch.
+
+# My Text Expander - Text Expansion Chrome Extension
+
+A Chrome extension for text expansion inspired by Text Blaze, built with SolidJS and TailwindCSS.
 
 
 ## Features
