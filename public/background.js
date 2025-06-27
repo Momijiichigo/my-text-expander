@@ -8,11 +8,12 @@ class BackgroundService {
     this.storageManager = new StorageManager();
     this.snippetProcessor = new SnippetProcessor();
     this.initialize();
+    this.pageActivated = false;
   }
 
   async initialize() {
     console.log('🔥 My Text Expander background service initializing...');
-    
+
     // Set up event listeners
     chrome.runtime.onInstalled.addListener((...args) => this.handleInstall(...args));
     chrome.runtime.onMessage.addListener((...args) => {
@@ -23,7 +24,43 @@ class BackgroundService {
       this.handleStorageChange(...args)
       return true
     });
-    
+    chrome.action.onClicked.addListener((tab) => {
+      if (!this.pageActivated) {
+        // Inject CSS
+        chrome.scripting.insertCSS({
+          target: {tabId: tab.id},
+          files: ["content/content.css"]
+        });
+
+        // Inject JavaScript
+        chrome.scripting.executeScript({
+          target: {tabId: tab.id},
+          files: ["content/content.js"]
+        });
+
+        chrome.action.setIcon({
+          tabId: tab.id,
+          path: {
+            16: "assets/icons/icon16.png",
+            32: "assets/icons/icon32.png",
+            48: "assets/icons/icon48.png",
+            128: "assets/icons/icon128.png"
+          }
+        })
+        chrome.action.setPopup({
+          tabId: tab.id,
+          popup: 'popup.html'
+        })
+
+        this.pageActivated = true;
+      } else {
+        chrome.action.openPopup({})
+
+      }
+      return true;
+    });
+
+
     console.log('✅ Background service initialized successfully');
   }
 
@@ -32,60 +69,60 @@ class BackgroundService {
       // Initialize default snippets and settings
       await this.initializeDefaultData();
       // Open options page for first-time setup
-      chrome.tabs.create({ url: 'options.html' });
+      chrome.tabs.create({url: 'options.html'});
     }
   }
 
   async handleMessage(message, sender, sendResponse) {
     // console.log('📨 Received message:', message.type, message);
-    
+
     try {
       let response;
-      
+
       switch (message.type) {
         case 'GET_SNIPPETS':
           const snippets = await this.storageManager.getAllSnippets();
-          response = { success: true, data: snippets };
+          response = {success: true, data: snippets};
           break;
 
         case 'SAVE_SNIPPET':
           const saved = await this.storageManager.saveSnippet(message.snippet);
-          response = { success: true, data: saved };
+          response = {success: true, data: saved};
           break;
 
         case 'DELETE_SNIPPET':
           await this.storageManager.deleteSnippet(message.id);
-          response = { success: true };
+          response = {success: true};
           break;
 
         case 'GET_SETTINGS':
           const settings = await this.storageManager.getSettings();
-          response = { success: true, data: settings };
+          response = {success: true, data: settings};
           break;
 
         case 'SAVE_SETTINGS':
           await this.storageManager.saveSettings(message.settings);
-          response = { success: true };
+          response = {success: true};
           break;
 
         case 'PROCESS_SNIPPET':
           const processed = await this.snippetProcessor.process(message.snippet, message.variables);
-          response = { success: true, data: processed };
+          response = {success: true, data: processed};
           break;
 
         case 'SEARCH_SNIPPETS':
           const results = await this.storageManager.searchSnippets(message.query);
-          response = { success: true, data: results };
+          response = {success: true, data: results};
           break;
 
         default:
-          response = { success: false, error: 'Unknown message type' };
+          response = {success: false, error: 'Unknown message type'};
       }
-      
+
       sendResponse(response);
     } catch (error) {
       console.error('Background service error:', error);
-      sendResponse({ success: false, error: error.message });
+      sendResponse({success: false, error: error.message});
     }
 
     return true; // Keep message channel open for async response
@@ -152,10 +189,10 @@ class BackgroundService {
 
     // Create default folders
     const defaultFolders = [
-      { name: 'Email', color: '#3498db', icon: 'email' },
-      { name: 'Personal', color: '#27ae60', icon: 'user' },
-      { name: 'Work', color: '#f39c12', icon: 'briefcase' },
-      { name: 'Utilities', color: '#9b59b6', icon: 'settings' }
+      {name: 'Email', color: '#3498db', icon: 'email'},
+      {name: 'Personal', color: '#27ae60', icon: 'user'},
+      {name: 'Work', color: '#f39c12', icon: 'briefcase'},
+      {name: 'Utilities', color: '#9b59b6', icon: 'settings'}
     ];
 
     for (const folder of defaultFolders) {

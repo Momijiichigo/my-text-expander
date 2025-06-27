@@ -14,22 +14,13 @@
     "service_worker": "background.js"
   },
   
-  "content_scripts": [{
-    "matches": ["<all_urls>"],
-    "js": ["content/content.js"],
-    "css": ["content/content.css"],
-    "run_at": "document_end",
-    "all_frames": true
-  }],
-  
   "action": {
-    "default_popup": "popup.html",
     "default_title": "My Text Expander",
     "default_icon": {
-      "16": "assets/icons/icon16.png",
-      "32": "assets/icons/icon32.png",
-      "48": "assets/icons/icon48.png",
-      "128": "assets/icons/icon128.png"
+      "16": "assets/icons/icon-inactive16.png",
+      "32": "assets/icons/icon-inactive32.png",
+      "48": "assets/icons/icon-inactive48.png",
+      "128": "assets/icons/icon-inactive128.png"
     }
   },
   
