@@ -1,6 +1,6 @@
 # ⚠️Meh, this is not my work
 
-- I just needed a text expander without the character number limit
+- I just needed a text expander without the word count limit
 - so I quickly used GitHub Copilot (Claude Sonnet 4) to make this.
 - Just putting it on GitHub so someone else ― who'd do the same thing ― don't need to ceate it from scratch.
 
