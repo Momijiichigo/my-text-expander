@@ -2,7 +2,7 @@
 
 - I just needed a text expander without the character number limit
 - so I quickly used GitHub Copilot (Claude Sonnet 4) to make this.
-- Just putting it on GitHub so someone else ― who'd make the same thing ― don't need to ceate it from scratch.
+- Just putting it on GitHub so someone else ― who'd do the same thing ― don't need to ceate it from scratch.
 
 # My Text Expander - Text Expansion Chrome Extension
 
