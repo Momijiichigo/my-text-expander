@@ -4,6 +4,10 @@
 - so I quickly made this using GitHub Copilot (Claude Sonnet 4).
 - Just putting it here on GitHub so anyone with same need can save time.
 
+
+https://github.com/user-attachments/assets/108397de-3cce-41dd-a84c-7cce132a5fed
+
+
 # My Text Expander - Text Expansion Chrome Extension
 
 A Chrome extension for text expansion inspired by Text Blaze, built with SolidJS and TailwindCSS.
