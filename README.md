@@ -1,6 +1,13 @@
-# My Text Expander - Personal Text Expansion Chrome Extension
+# My Text Expander - Text Expansion Chrome Extension
 
-A Chrome extension for personal text expansion inspired by Text Expander, built with SolidJS and TailwindCSS.
+A Chrome extension for text expansion inspired by Text Blaze, built with SolidJS and TailwindCSS.
+
+⚠️**Meh, this is not my work**
+
+- I just needed a text expander without the character number limit
+- so I quickly used GitHub Copilot (Claude Sonnet 4) to make this.
+- Just putting it on GitHub so someone else ― who'd make the same thing ― don't need to ceate it from scratch.
+
 
 ## Features
 
@@ -59,7 +66,7 @@ Alternatively, you can use any image editor to convert the `assets/icons/icon.sv
 
 1. Click the extension icon to open the popup
 2. Click "Add Snippet" or go to Settings → Manage Snippets
-3. Enter a shortcut (e.g., `//email`) and the text to expand
+3. Enter a shortcut (e.g., `/email`) and the text to expand
 4. Use dynamic variables like `{date}`, `{time}`, `{name}`, etc.
 
 ### Text Expansion
