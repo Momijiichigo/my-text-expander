@@ -1,4 +1,4 @@
-# ⚠️Meh, this is not my work
+# ⚠️Meh, this is not my work, but LLM's
 
 - I just needed a text expander without the word count limit
 - so I quickly made this using GitHub Copilot (Claude Sonnet 4).
