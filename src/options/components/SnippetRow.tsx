@@ -1,7 +1,6 @@
 import type { SnippetRowProps } from '../../types';
 
 export function SnippetRow(props: SnippetRowProps) {
-  console.log('🎯 SnippetRow rendering for snippet:', props.snippet.shortcut);
   
   return (
     <div class="grid grid-cols-12 gap-4 px-4 py-3 hover:bg-gray-50 items-center">

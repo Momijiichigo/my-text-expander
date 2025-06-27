@@ -1,5 +1,5 @@
 import { render } from 'solid-js/web';
-import { createSignal, createEffect, createMemo, Show, onMount } from 'solid-js';
+import { createSignal, createMemo, Show, onMount } from 'solid-js';
 import type { Snippet, Settings, ChromeResponse } from '../types';
 
 // Import components
@@ -31,7 +31,6 @@ function OptionsApp() {
         chrome.runtime.sendMessage({ type: 'GET_SNIPPETS' }) as Promise<ChromeResponse<Record<string, Snippet>>>,
         chrome.runtime.sendMessage({ type: 'GET_SETTINGS' }) as Promise<ChromeResponse<Settings>>
       ]);
-      console.log(snippetsResponse, settingsResponse);
 
       if (snippetsResponse && snippetsResponse.success) {
         const snippetsData = snippetsResponse.data || {};
