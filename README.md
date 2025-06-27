@@ -7,11 +7,18 @@
 
 https://github.com/user-attachments/assets/108397de-3cce-41dd-a84c-7cce132a5fed
 
+## What I tested
+
+- Snippet creation/modification/deletion works
+- Simple text expansion works
+- Custom cursor position `{{CURSOR_POSITION}}` works
+- inserting current time with custom format e.g. `{time: MMMM DD, YYYY}` works
 
 # My Text Expander - Text Expansion Chrome Extension
 
-A Chrome extension for text expansion inspired by Text Blaze
+A Chrome extension for text expansion inspired by Text Blaze.
 
+Dev Stack:
 - SolidJS
 - TailwindCSS
 - Bun.js
