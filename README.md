@@ -10,7 +10,12 @@ https://github.com/user-attachments/assets/108397de-3cce-41dd-a84c-7cce132a5fed
 
 # My Text Expander - Text Expansion Chrome Extension
 
-A Chrome extension for text expansion inspired by Text Blaze, built with SolidJS and TailwindCSS.
+A Chrome extension for text expansion inspired by Text Blaze
+
+- SolidJS
+- TailwindCSS
+- Bun.js
+- Vite.js
 
 
 ## Features
