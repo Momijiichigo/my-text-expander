@@ -243,7 +243,7 @@ class TextExpansionEngine {
 
   getInputText(element) {
     if (element.contentEditable === 'true' || element.contentEditable === '') {
-      return element.textContent || '';
+      return element.innerText || '';
     } else {
       return element.value || '';
     }
@@ -365,7 +365,7 @@ class TextExpansionEngine {
       target.setSelectionRange(cursorPosition, cursorPosition);
     } else if (target instanceof HTMLDivElement) {
       // For contenteditable divs, set the selection range manually
-      setCaret(target, cursorPosition);
+      setCaret(target, cursorPosition - newText.substring(0, cursorPosition).split(/\n/m).length + 1);
     }
     
     // Play sound if enabled
